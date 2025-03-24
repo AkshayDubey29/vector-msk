@@ -47,7 +47,7 @@ RUN git clone --depth=1 --branch v0.45.0 https://github.com/vectordotdev/vector.
 
 WORKDIR /build/vector/vector
 
-RUN cargo build --release -j8
+RUN cargo build --release -j1
 #RUN RUST_BACKTRACE=1 CARGO_LOG=trace cargo build --release --verbose
 
 
