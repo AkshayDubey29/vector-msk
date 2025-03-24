@@ -7,7 +7,6 @@ RUN apk add --no-cache \
   zstd-dev lz4-dev cyrus-sasl-dev \
   autoconf automake libtool pkgconf perl
 
-
 WORKDIR /build/librdkafka
 
 RUN git clone --depth=1 --branch v2.3.0 https://github.com/confluentinc/librdkafka.git .
@@ -47,8 +46,9 @@ WORKDIR /build/vector
 RUN git clone --depth=1 --branch v0.45.0 https://github.com/vectordotdev/vector.git .
 
 WORKDIR /build/vector/vector
-RUN cargo build --release
-#RUN RUST_BACKTRACE=full CARGO_LOG=trace cargo build --release --verbose || cat /build/vector/target/release/build/*/output
+
+RUN cargo build --release -j8
+#RUN RUST_BACKTRACE=1 CARGO_LOG=trace cargo build --release --verbose
 
 
 ### Stage 3: Minimal runtime image with Vector + MSK IAM support
