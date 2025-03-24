@@ -28,7 +28,7 @@ RUN apk add --no-cache \
   musl-dev alpine-sdk pkgconf pkgconfig \
   openssl-dev curl-dev zstd-dev \
   lz4-dev cmake perl protobuf-dev \
-  cyrus-sasl-dev bash
+  cyrus-sasl-dev bash zlib openssl
 
 # Copy compiled librdkafka from the previous stage
 COPY --from=librdkafka-builder /usr/local /usr/local
@@ -56,7 +56,7 @@ FROM alpine:3.18
 
 RUN apk add --no-cache \
   bash curl jq tzdata openssl \
-  libcurl libc6-compat zstd
+  libcurl libc6-compat zstd zlib 
 
 # Copy Vector binary
 COPY --from=vector-builder /build/vector/target/release/vector /usr/local/bin/vector
