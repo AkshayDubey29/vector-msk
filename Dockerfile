@@ -28,7 +28,7 @@ RUN apk add --no-cache \
   musl-dev alpine-sdk pkgconf pkgconfig \
   openssl-dev curl-dev zstd-dev \
   lz4-dev cmake perl protobuf-dev \
-  cyrus-sasl-dev bash zlib openssl
+  cyrus-sasl-dev bash zlib openssl zlib-dev
 
 # Copy compiled librdkafka from the previous stage
 COPY --from=librdkafka-builder /usr/local /usr/local
