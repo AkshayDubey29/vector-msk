@@ -7,6 +7,7 @@ RUN apk add --no-cache \
   zstd-dev lz4-dev cyrus-sasl-dev \
   autoconf automake libtool pkgconf perl
 
+
 WORKDIR /build/librdkafka
 
 RUN git clone --depth=1 --branch v2.3.0 https://github.com/confluentinc/librdkafka.git .
